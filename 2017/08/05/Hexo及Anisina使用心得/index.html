@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="学习、成长、奋斗">
+    <meta name="keyword" content="Java、Python、C++、RPC">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://otnnps88s.bkt.clouddn.com/header_800.jpg">
+    <link rel="alternate" type="application/atom+xml" title="柳汝滕" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Hexo及Anisina使用心得｜柳汝滕&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://fingthinking.github.io/2017/08/05/Hexo及Anisina使用心得/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    柳汝滕
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archives/">archives</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">tags</a>
+                        </li>
+							
+						
+                    
+                        
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://otnnps88s.bkt.clouddn.com/image/xingkong.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://otnnps88s.bkt.clouddn.com/image/xingkong.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Hexo及Anisina使用心得</h1>
+                    
+                    <span class="meta">
+                         作者 柳汝滕
+                        <span>
+                          日期 2017-08-05
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Hexo"
+                           title="Hexo">Hexo</a>
+                        
+                        <a class="tag" href="/tags/#Anisina"
+                           title="Anisina">Anisina</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Hexo及Anisina使用心得
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="Anisina相关链接"><a href="#Anisina相关链接" class="headerlink" title="Anisina相关链接"></a>Anisina相关链接</h2><p><a href="http://haojen.github.io/2017/05/09/Anisina-%E4%B8%AD%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="external">Anisina使用教程</a><br><a href="https://github.com/Haojen/hexo-theme-Anisina" target="_blank" rel="external">Anisina Github</a></p>
+<h2 id="Hexo使用中遇到的问题"><a href="#Hexo使用中遇到的问题" class="headerlink" title="Hexo使用中遇到的问题"></a>Hexo使用中遇到的问题</h2><p>Hexo初次使用的教程，就不再赘述，附上我参考的博客：<br><a href="http://blog.csdn.net/gdutxiaoxu/article/details/53576018" target="_blank" rel="external">手把手教你用Hexo+Github 搭建属于自己的博客</a></p>
+<h4 id="问题1：无法部署项目到github中？"><a href="#问题1：无法部署项目到github中？" class="headerlink" title="问题1：无法部署项目到github中？"></a>问题1：无法部署项目到github中？</h4><p>解决办法：   </p>
+<p>a.检查<code>_config.yml</code>文件中github的配置</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:xxxx/xxx.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure>
+<p>b.安装hexo-deployer-git插件  </p>
+<blockquote>
+<p>npm install hexo-deployer-git –save</p>
+</blockquote>
+<h4 id="问题2-使用Anisina主题，hexo-new-page-xxx之后，hexo-g报错？"><a href="#问题2-使用Anisina主题，hexo-new-page-xxx之后，hexo-g报错？" class="headerlink" title="问题2: 使用Anisina主题，hexo new page xxx之后，hexo g报错？"></a>问题2: 使用Anisina主题，hexo new page xxx之后，hexo g报错？</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">Unhandled rejection <span class="built_in">ReferenceError</span>: <span class="regexp">/Users/</span>liuruteng/blog/fingthinking/themes/Anisina/layout/page.ejs:<span class="number">145</span></div><div class="line">    <span class="number">143</span>|     &lt;div class="row"&gt;</div><div class="line">    144|         &lt;div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container"&gt;</div><div class="line"> &gt;&gt; 145|             &lt;%- body %&gt;</div><div class="line">    146|         &lt;/div&gt;</div><div class="line">    147|         &lt;!-- Sidebar Container --&gt;</div><div class="line">    148|         &lt;div class="</div><div class="line"></div><div class="line">body is not defined</div><div class="line">    at eval (eval at exports.compile (/Users/liuruteng/blog/fingthinking/node_modules/ejs/lib/ejs.js:242:14), &lt;anonymous&gt;:30:4567)</div><div class="line">    at eval (eval at exports.compile (/Users/liuruteng/blog/fingthinking/node_modules/ejs/lib/ejs.js:242:14), &lt;anonymous&gt;:30:12223)</div><div class="line">    at /Users/liuruteng/blog/fingthinking/node_modules/ejs/lib/ejs.js:255:15</div><div class="line">    at Theme._View.View._compiled (/Users/liuruteng/blog/fingthinking/node_modules/hexo/lib/theme/view.js:127:30)</div><div class="line">    at Theme._View.View.View.render (/Users/liuruteng/blog/fingthinking/node_modules/hexo/lib/theme/view.js:29:15)</div><div class="line">    at /Users/liuruteng/blog/fingthinking/node_modules/hexo/lib/hexo/index.js:390:25</div><div class="line">    at tryCatcher (/Users/liuruteng/blog/fingthinking/node_modules/bluebird/js/release/util.js:16:23)</div><div class="line">    at /Users/liuruteng/blog/fingthinking/node_modules/bluebird/js/release/method.js:15:34</div><div class="line">    at RouteStream._read (/Users/liuruteng/blog/fingthinking/node_modules/hexo/lib/hexo/router.js:134:3)</div><div class="line">    at RouteStream.Readable.read (_stream_readable.js:431:10)</div><div class="line">    at resume_ (_stream_readable.js:811:12)</div><div class="line">    at _combinedTickCallback (internal/process/next_tick.js:138:11)</div><div class="line">    at process._tickCallback (internal/process/next_tick.js:180:9)</div></pre></td></tr></table></figure>
+<p>这种问题主要是由于page.ejs模板文件无法找到<code>body</code>变量导致的异常。其中<code>body</code>变量是由hexo定义，通过<strong>front-matter</strong><br>提供，作为<strong>“子模板的内容嵌入”</strong></p>
+<p>在Anisina主题中，有<code>index.ejs</code>作为<code>page.ejs</code>的子模板,有如下代码</p>
+<figure class="highlight yml"><figcaption><span>index.ejs</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">layout:</span> </div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<p>说明，每次调用<code>index.ejs</code>的时候，都将会调用<code>page.ejs</code>进行渲染，而<code>index.ejs</code>将作为<code>page.ejs</code>的<strong>body</strong>变量传入其中，于是有了上文中的<strong><em>145</em></strong>行的<code>&lt;%- body%&gt;</code>的错误。</p>
+<p>解决方案给出两种，我使用第二种：  </p>
+<ol>
+<li><p>使用命令<code>hexo new page xxx</code>之后，修改<em>‘source/xxx/index.md’</em>的front-matter部分，添加<code>layout: TT</code>,其中的<code>TT</code>不能为page，具体的值，请参考<strong><em>“Anisina/layout/\</em>.ejs”*</strong>中的*的值；</p>
+</li>
+<li><p>进入<strong><em>“Anisina/layout/”</em></strong>目录，执行如下命令</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">#</span> 移动page.ejs为m_page.ejs</div><div class="line">mv page.ejs m_page.ejs  </div><div class="line"><span class="meta">#</span> 将index.ejs的第二行替换，就是将index.ejs作为m_page.ejs的子模板</div><div class="line">sed -i="" '2s/^.*/layout: m_page/' index.ejs </div><div class="line"><span class="meta">#</span> 创建新的page.ejs模板文件，并作为m_page.ejs的子模板</div><div class="line">echo -e "---\nlayout: m_page\n---\n&lt;%- page.content %&gt;" &gt; page.ejs</div></pre></td></tr></table></figure>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDAwNy82NTcy">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Anisina相关链接"><span class="toc-text">Anisina相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo使用中遇到的问题"><span class="toc-text">Hexo使用中遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题1：无法部署项目到github中？"><span class="toc-text">问题1：无法部署项目到github中？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题2-使用Anisina主题，hexo-new-page-xxx之后，hexo-g报错？"><span class="toc-text">问题2: 使用Anisina主题，hexo new page xxx之后，hexo g报错？</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Hexo"
+                           title="Hexo">Hexo</a>
+                        
+                        <a class="tag" href="/tags/#Anisina"
+                           title="Anisina">Anisina</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+                o = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
+        }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+        anchors.options = {
+            visible: 'always',
+            placement: 'right',
+            icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link {
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top: -0.1em;
+        }
+    }
+</style>
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/fingthinking">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fingthinking">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/fingthinking">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/fingthinking">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 柳汝滕 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://fingthinking.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://otnnps88s.bkt.clouddn.com/header_800.jpg">
+</body>
+
+</html>
