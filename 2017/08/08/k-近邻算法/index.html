@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hexo及Anisina使用心得｜柳汝滕&#39;s blog
+        k-近邻算法｜柳汝滕&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://fingthinking.github.io/2017/08/05/Hexo及Anisina使用心得/">
+    <link rel="canonical" href="http://fingthinking.github.io/2017/08/08/k-近邻算法/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -148,18 +148,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hexo及Anisina使用心得</h1>
+                    <h1>k-近邻算法</h1>
                     
                     <span class="meta">
                          作者 柳汝滕
                         <span>
-                          日期 2017-08-05
+                          日期 2017-08-08
                          </span>
                     </span>
                     <div class="tags text-center">
 						
-                        <a class="tag" href="/tags/#Anisina"
-                           title="Anisina">Anisina</a>
+                        <a class="tag" href="/tags/#Machine Learning"
+                           title="Machine Learning">Machine Learning</a>
                         
                     </div>
                 </div>
@@ -168,7 +168,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hexo及Anisina使用心得
+            k-近邻算法
         </span>
     </div>
 </header>
@@ -179,39 +179,31 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="Anisina相关链接"><a href="#Anisina相关链接" class="headerlink" title="Anisina相关链接"></a>Anisina相关链接</h2><p><a href="http://haojen.github.io/2017/05/09/Anisina-%E4%B8%AD%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="external">Anisina使用教程</a><br><a href="https://github.com/Haojen/hexo-theme-Anisina" target="_blank" rel="external">Anisina Github</a></p>
-<h2 id="Hexo使用中遇到的问题"><a href="#Hexo使用中遇到的问题" class="headerlink" title="Hexo使用中遇到的问题"></a>Hexo使用中遇到的问题</h2><p>Hexo初次使用的教程，就不再赘述，附上我参考的博客：<br><a href="http://blog.csdn.net/gdutxiaoxu/article/details/53576018" target="_blank" rel="external">手把手教你用Hexo+Github 搭建属于自己的博客</a></p>
-<h4 id="问题1：无法部署项目到github中？"><a href="#问题1：无法部署项目到github中？" class="headerlink" title="问题1：无法部署项目到github中？"></a>问题1：无法部署项目到github中？</h4><p>解决办法：   </p>
-<p>a.检查<code>_config.yml</code>文件中github的配置</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:xxxx/xxx.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure>
-<p>b.安装hexo-deployer-git插件  </p>
-<blockquote>
-<p>npm install hexo-deployer-git —save</p>
-</blockquote>
-<h4 id="问题2-使用Anisina主题，hexo-new-page-xxx之后，hexo-g报错？"><a href="#问题2-使用Anisina主题，hexo-new-page-xxx之后，hexo-g报错？" class="headerlink" title="问题2: 使用Anisina主题，hexo new page xxx之后，hexo g报错？"></a>问题2: 使用Anisina主题，hexo new page xxx之后，hexo g报错？</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">Unhandled rejection <span class="built_in">ReferenceError</span>: <span class="regexp">/Users/</span>liuruteng/blog/fingthinking/themes/Anisina/layout/page.ejs:<span class="number">145</span></div><div class="line">    <span class="number">143</span>|     &lt;div class="row"&gt;</div><div class="line">    144|         &lt;div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container"&gt;</div><div class="line"> &gt;&gt; 145|             &lt;%- body %&gt;</div><div class="line">    146|         &lt;/div&gt;</div><div class="line">    147|         &lt;!-- Sidebar Container --&gt;</div><div class="line">    148|         &lt;div class="</div><div class="line"></div><div class="line">body is not defined</div><div class="line">    at eval (eval at exports.compile (/Users/liuruteng/blog/fingthinking/node_modules/ejs/lib/ejs.js:242:14), &lt;anonymous&gt;:30:4567)</div><div class="line">    at eval (eval at exports.compile (/Users/liuruteng/blog/fingthinking/node_modules/ejs/lib/ejs.js:242:14), &lt;anonymous&gt;:30:12223)</div><div class="line">    at /Users/liuruteng/blog/fingthinking/node_modules/ejs/lib/ejs.js:255:15</div><div class="line">    at Theme._View.View._compiled (/Users/liuruteng/blog/fingthinking/node_modules/hexo/lib/theme/view.js:127:30)</div><div class="line">    at Theme._View.View.View.render (/Users/liuruteng/blog/fingthinking/node_modules/hexo/lib/theme/view.js:29:15)</div><div class="line">    at /Users/liuruteng/blog/fingthinking/node_modules/hexo/lib/hexo/index.js:390:25</div><div class="line">    at tryCatcher (/Users/liuruteng/blog/fingthinking/node_modules/bluebird/js/release/util.js:16:23)</div><div class="line">    at /Users/liuruteng/blog/fingthinking/node_modules/bluebird/js/release/method.js:15:34</div><div class="line">    at RouteStream._read (/Users/liuruteng/blog/fingthinking/node_modules/hexo/lib/hexo/router.js:134:3)</div><div class="line">    at RouteStream.Readable.read (_stream_readable.js:431:10)</div><div class="line">    at resume_ (_stream_readable.js:811:12)</div><div class="line">    at _combinedTickCallback (internal/process/next_tick.js:138:11)</div><div class="line">    at process._tickCallback (internal/process/next_tick.js:180:9)</div></pre></td></tr></table></figure>
-<p>这种问题主要是由于page.ejs模板文件无法找到<code>body</code>变量导致的异常。其中<code>body</code>变量是由hexo定义，通过<strong>front-matter</strong><br>提供，作为<strong>“子模板的内容嵌入”</strong></p>
-<p>在Anisina主题中，有<code>index.ejs</code>作为<code>page.ejs</code>的子模板,有如下代码</p>
-<figure class="highlight yml"><figcaption><span>index.ejs</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">layout:</span> </div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
-<p>说明，每次调用<code>index.ejs</code>的时候，都将会调用<code>page.ejs</code>进行渲染，而<code>index.ejs</code>将作为<code>page.ejs</code>的<strong>body</strong>变量传入其中，于是有了上文中的<strong><em>145</em></strong>行的<code>&lt;%- body%&gt;</code>的错误。</p>
-<p>解决方案给出两种，我使用第二种：  </p>
-<ol>
-<li><p>使用命令<code>hexo new page xxx</code>之后，修改<em>‘source/xxx/index.md’</em>的front-matter部分，添加<code>layout: TT</code>,其中的<code>TT</code>不能为page，具体的值，请参考<strong><em>“Anisina/layout/\</em>.ejs”*</strong>中的*的值；</p>
-</li>
-<li><p>进入<strong><em>“Anisina/layout/”</em></strong>目录，执行如下命令</p>
-</li>
+                <h2 id="k-近邻算法"><a href="#k-近邻算法" class="headerlink" title="k-近邻算法"></a>k-近邻算法</h2><h3 id="1-KNN算法思想"><a href="#1-KNN算法思想" class="headerlink" title="1. KNN算法思想"></a>1. KNN算法思想</h3><ol>
+<li>计算已知数据集中的某个已知<code>类别</code>的点与当前点的距离；</li>
+<li>按照距离依次递增排序；</li>
+<li>选取与当前距离最小的k个点；</li>
+<li>确定前k个点，所属类别出现的频率；</li>
+<li>返回前k个点出现频率最高的类别作为当前点的预测类别；</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><div class="line"><span class="meta">#</span> 移动page.ejs为m_page.ejs</div><div class="line">mv page.ejs m_page.ejs  </div><div class="line"><span class="meta">#</span> 将index.ejs的第二行替换，就是将index.ejs作为m_page.ejs的子模板</div><div class="line">sed -i="" '2s/^.*/layout: m_page/' index.ejs </div><div class="line"><span class="meta">#</span> 创建新的page.ejs模板文件，并作为m_page.ejs的子模板</div><div class="line">echo -e "---\nlayout: m_page\n---\n&lt;%- page.content %&gt;" &gt; page.ejs</div></pre></td></tr></table></figure>
+<p>距离公式:</p>
+<script type="math/tex; mode=display">d=\sqrt{\sum_j^n (x^j_i-x^j)^2} \tag{2-1}</script><p>其中$x^j_i$表示第$i$个输入向量的第$j$个分量</p>
+<p>下面是分类代码实现<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify</span><span class="params">(in_x, data_set, labels, k)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    进行分类</div><div class="line">    :param in_x: 输入分量x</div><div class="line">    :param data_set: 已知类别的数据集</div><div class="line">    :param labels:  对应的数据集的label</div><div class="line">    :param k: 迭代次数</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    size = data_set.shape[<span class="number">0</span>]  <span class="comment"># 训练数据集的个数</span></div><div class="line"></div><div class="line">    <span class="comment"># np.title第二个参数是数组形式，</span></div><div class="line">    <span class="comment"># 其中第一个数字代表复制的次数，</span></div><div class="line">    <span class="comment"># 后面的数字代表在哪个维度上复制，</span></div><div class="line">    <span class="comment"># 如果只有一个值，则代表维度扩张复制</span></div><div class="line"></div><div class="line">    <span class="comment"># ======= 求距离 ========</span></div><div class="line">    mat_dif = np.tile(in_x, (size, <span class="number">1</span>)) - data_set  <span class="comment"># 2维， [[x1-x],[x2-x]]</span></div><div class="line">    mat_pow = mat_dif ** <span class="number">2</span></div><div class="line">    dis = np.sqrt(mat_pow.sum(axis=<span class="number">1</span>))  <span class="comment"># axis是对哪一个维度求和运算, 无需开根号运算</span></div><div class="line">    dis_arg = dis.argsort()</div><div class="line">    <span class="comment"># ======= 距离计算完成且有序 ===</span></div><div class="line">    cls_count = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(k):</div><div class="line">        vote_label = labels[dis_arg[i]]  <span class="comment"># 获得第i小的排序结果的分类</span></div><div class="line">        cls_count[vote_label] = cls_count.get(vote_label, <span class="number">0</span>) + <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="comment"># 获取cls中值最大的key</span></div><div class="line">    st = sorted(cls_count.iteritems(), key=<span class="keyword">lambda</span> item: item[<span class="number">1</span>], reverse=<span class="keyword">True</span>)</div><div class="line">    <span class="keyword">return</span> st[<span class="number">0</span>][<span class="number">0</span>]</div></pre></td></tr></table></figure></p>
+<h3 id="2-数据归一化"><a href="#2-数据归一化" class="headerlink" title="2. 数据归一化"></a>2. 数据归一化</h3><p>数据存在数值上的差别，通常情况下需要进行归一化处理，即将数值映射到0~1或者-1~1之间的数值。</p>
+<p>0~1归一化:   </p>
+<script type="math/tex; mode=display">val = \frac{val - min}{max-min} \tag{2-2}</script><p>-1~1归一化:  </p>
+<script type="math/tex; mode=display">val = \frac{val-avg}{max-min} \tag{2-3}</script><p>代码实现<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">auto_norm</span><span class="params">(data_set)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    数据归一化</div><div class="line">    :param data_set: 待归一化的数据集</div><div class="line">    :return: 归一化后的数据集，每一列的取值范围，每一列的最小值</div><div class="line">    """</div><div class="line">    <span class="comment"># 获取每一列最大值和最小值</span></div><div class="line">    d_max, d_min = data_set.max(<span class="number">0</span>), data_set.min(<span class="number">0</span>)</div><div class="line">    d_range = d_max - d_min</div><div class="line"></div><div class="line">    mat_min = np.tile(d_min, (data_set.sharpe[<span class="number">0</span>], <span class="number">1</span>))</div><div class="line">    mat_max = np.tile(d_range, (data_set.sharpe[<span class="number">0</span>], <span class="number">1</span>))</div><div class="line"></div><div class="line">    mat_norm = (data_set - mat_min) / mat_max</div><div class="line">    <span class="keyword">return</span> mat_norm, d_range, d_min</div></pre></td></tr></table></figure></p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2017/08/08/k-近邻算法/" data-toggle="tooltip" data-placement="top"
-                           title="k-近邻算法">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/2017/08/05/Hexo及Anisina使用心得/" data-toggle="tooltip" data-placement="top"
+                           title="Hexo及Anisina使用心得">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -245,7 +237,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Anisina相关链接"><span class="toc-text">Anisina相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo使用中遇到的问题"><span class="toc-text">Hexo使用中遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题1：无法部署项目到github中？"><span class="toc-text">问题1：无法部署项目到github中？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题2-使用Anisina主题，hexo-new-page-xxx之后，hexo-g报错？"><span class="toc-text">问题2: 使用Anisina主题，hexo new page xxx之后，hexo g报错？</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#k-近邻算法"><span class="toc-text">k-近邻算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-KNN算法思想"><span class="toc-text">1. KNN算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数据归一化"><span class="toc-text">2. 数据归一化</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
@@ -267,8 +259,8 @@
                     </h5>
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Anisina"
-                           title="Anisina">Anisina</a>
+                        <a class="tag" href="/tags/#Machine Learning"
+                           title="Machine Learning">Machine Learning</a>
                         
                     </div>
                 </section>

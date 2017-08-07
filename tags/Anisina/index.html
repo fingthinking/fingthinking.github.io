@@ -3,11 +3,11 @@
 
 <!-- Head tag -->
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="学习、成长、奋斗">
-    <meta name="keyword" content="Java、Python、C++、RPC">
+    <meta name="keyword" content="Java,Python,RPC,C/C++,Machine Learning">
     <meta name="theme-color" content="#600090">
     <meta name="msapplication-navbutton-color" content="#600090">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="/css/blog-style.css">
 
     <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/syntax.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <style>
@@ -42,7 +42,7 @@
 </style>
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
-<!-- Navigation -->
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="true
 " data-ishome = "false" >
     <div class="container-fluid">
@@ -76,31 +76,14 @@
                         <a href="/">Home</a>
                     </li>
 					
-                    
-                        
-							
-								
-							
-						
-                    
-                        
-							
                         <li>
-                            <a href="/archives/">archives</a>
+                            <a href="/archives">archives</a>
                         </li>
-							
-						
-                    
-                        
-							
+					
                         <li>
-                            <a href="/tags/">tags</a>
+                            <a href="/tags">tags</a>
                         </li>
-							
-						
-                    
-                        
-                    
+					
 					
 					
 						<li>
@@ -193,6 +176,22 @@
 						<h3 class="archive-title">
 							<a href="/archives/2017/08">08</a>
 						</h3>
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/08/08/k-近邻算法/">
+                        <h4 class="post-title">
+                            k-近邻算法
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
+				
+				
+				
 				
 				<div class="one-tag-list">
                 <div class="post-preview">
@@ -343,7 +342,24 @@
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!--wechat title img-->
-<img class="wechat-title-img" src="http://otnnps88s.bkt.clouddn.com/header_800.jpg">
+<img class="wechat-title-img" src="http://otnnps88s.bkt.clouddn.com/header_800.jpg"><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 
 </html>
