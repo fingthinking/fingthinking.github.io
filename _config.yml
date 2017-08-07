@@ -15,7 +15,12 @@ SEOTitle: 柳汝滕's blog
 header-img: //o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg
 email: fingthinking@qq.com
 description: "学习、成长、奋斗"
-keyword: "Java、Python、C++、RPC" # seo key words
+keyword:  # seo key words
+    - Java
+    - Python
+    - RPC
+    - C/C++
+    - Machine Learning
 
 favicon: http://otnnps88s.bkt.clouddn.com/header_800.jpg # your favicon png
 # custom end
