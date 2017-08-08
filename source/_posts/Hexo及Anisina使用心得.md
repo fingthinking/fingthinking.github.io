@@ -4,6 +4,7 @@ date: 2017-08-05 23:47:16
 tags:
 	- Anisina
 ---
+> ***注意：部分浏览器会拦截MathJax生成数学公式，如出现无法显示公式，请允许浏览器加载脚本***
 
 ## Anisina相关链接
 [Anisina使用教程](http://haojen.github.io/2017/05/09/Anisina-%E4%B8%AD%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/)  
@@ -16,7 +17,7 @@ Hexo初次使用的教程，就不再赘述，附上我参考的博客：
 #### 问题1：无法部署项目到github中？  
 解决办法：   
 
-a.检查`_config.yml`文件中github的配置
+##### a.检查`_config.yml`文件中github的配置
 
 ```yml
 deploy:
@@ -24,10 +25,10 @@ deploy:
   repo: git@github.com:xxxx/xxx.github.io.git
   branch: master
 ```
-b.安装hexo-deployer-git插件  
+##### b.安装hexo-deployer-git插件  
 > npm install hexo-deployer-git --save
 
-#### 问题2: 使用Anisina主题，hexo new page xxx之后，hexo g报错？
+#### 问题2: 使用Anisina主题，page报错？
 
 ```javascript
 Unhandled rejection ReferenceError: /Users/liuruteng/blog/fingthinking/themes/Anisina/layout/page.ejs:145
@@ -78,4 +79,33 @@ mv page.ejs m_page.ejs
 sed -i="" '2s/^.*/layout: m_page/' index.ejs 
 # 创建新的page.ejs模板文件，并作为m_page.ejs的子模板
 echo -e "---\nlayout: m_page\n---\n<%- page.content %>" > page.ejs 
+```
+
+#### 问题3: 博客中使用数学公式
+安装`hexo-math`插件
+> npm install hexo-math --save
+
+然后在`_config.yml`文件中增加相关配置：
+
+```yml
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    src: "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    config:
+        tex2jax:
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ]
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            processEscapes: true
+        TeX:
+            equationNumbers:
+                autoNumber: "AMS"
+      # MathJax config
+  katex:
+    css: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"
+    js: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js" # not used
+    config:
+      throwOnError: false
+      errorColor: "#cc0000"
+      # KaTeX config
 ```
