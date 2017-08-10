@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        k-近邻算法｜柳汝滕&#39;s blog
+        Python字符串编码及文件输出｜柳汝滕&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://fingthinking.github.io/2017/08/08/k-近邻算法/">
+    <link rel="canonical" href="http://fingthinking.github.io/2017/08/10/Python字符串编码/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -148,18 +148,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>k-近邻算法</h1>
+                    <h1>Python字符串编码及文件输出</h1>
                     
                     <span class="meta">
                          作者 柳汝滕
                         <span>
-                          日期 2017-08-08
+                          日期 2017-08-10
                          </span>
                     </span>
                     <div class="tags text-center">
 						
-                        <a class="tag" href="/tags/#Machine Learning"
-                           title="Machine Learning">Machine Learning</a>
+                        <a class="tag" href="/tags/#Python"
+                           title="Python">Python</a>
                         
                     </div>
                 </div>
@@ -168,7 +168,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            k-近邻算法
+            Python字符串编码及文件输出
         </span>
     </div>
 </header>
@@ -182,35 +182,57 @@
                 <blockquote>
 <p><strong><em>注意：部分浏览器会拦截MathJax生成数学公式，如出现无法显示公式，请允许浏览器加载脚本</em></strong></p>
 </blockquote>
-<h2 id="k-近邻算法"><a href="#k-近邻算法" class="headerlink" title="k-近邻算法"></a>k-近邻算法</h2><h3 id="1-KNN算法思想"><a href="#1-KNN算法思想" class="headerlink" title="1. KNN算法思想"></a>1. KNN算法思想</h3><ol>
-<li>计算已知数据集中的某个已知<code>类别</code>的点与当前点的距离；</li>
-<li>按照距离依次递增排序；</li>
-<li>选取与当前距离最小的k个点；</li>
-<li>确定前k个点，所属类别出现的频率；</li>
-<li>返回前k个点出现频率最高的类别作为当前点的预测类别；</li>
-</ol>
-<p>距离公式:</p>
-<script type="math/tex; mode=display">d=\sqrt{\sum_j^n (x^j_i-x^j)^2} \tag{2-1}</script><p>其中$x^j_i$表示第$i$个输入向量的第$j$个分量</p>
-<p>下面是分类代码实现<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify</span><span class="params">(in_x, data_set, labels, k)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    进行分类</div><div class="line">    :param in_x: 输入分量x</div><div class="line">    :param data_set: 已知类别的数据集</div><div class="line">    :param labels:  对应的数据集的label</div><div class="line">    :param k: 迭代次数</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    size = data_set.shape[<span class="number">0</span>]  <span class="comment"># 训练数据集的个数</span></div><div class="line"></div><div class="line">    <span class="comment"># np.title第二个参数是数组形式，</span></div><div class="line">    <span class="comment"># 其中第一个数字代表复制的次数，</span></div><div class="line">    <span class="comment"># 后面的数字代表在哪个维度上复制，</span></div><div class="line">    <span class="comment"># 如果只有一个值，则代表维度扩张复制</span></div><div class="line"></div><div class="line">    <span class="comment"># ======= 求距离 ========</span></div><div class="line">    mat_dif = np.tile(in_x, (size, <span class="number">1</span>)) - data_set  <span class="comment"># 2维， [[x1-x],[x2-x]]</span></div><div class="line">    mat_pow = mat_dif ** <span class="number">2</span></div><div class="line">    dis = np.sqrt(mat_pow.sum(axis=<span class="number">1</span>))  <span class="comment"># axis是对哪一个维度求和运算, 无需开根号运算</span></div><div class="line">    dis_arg = dis.argsort()</div><div class="line">    <span class="comment"># ======= 距离计算完成且有序 ===</span></div><div class="line">    cls_count = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(k):</div><div class="line">        vote_label = labels[dis_arg[i]]  <span class="comment"># 获得第i小的排序结果的分类</span></div><div class="line">        cls_count[vote_label] = cls_count.get(vote_label, <span class="number">0</span>) + <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="comment"># 获取cls中值最大的key</span></div><div class="line">    st = sorted(cls_count.iteritems(), key=<span class="keyword">lambda</span> item: item[<span class="number">1</span>], reverse=<span class="keyword">True</span>)</div><div class="line">    <span class="keyword">return</span> st[<span class="number">0</span>][<span class="number">0</span>]</div></pre></td></tr></table></figure></p>
-<h3 id="2-数据归一化"><a href="#2-数据归一化" class="headerlink" title="2. 数据归一化"></a>2. 数据归一化</h3><p>数据存在数值上的差别，通常情况下需要进行归一化处理，即将数值映射到0~1或者-1~1之间的数值。</p>
-<p>0~1归一化:   </p>
-<script type="math/tex; mode=display">val = \frac{val - min}{max-min} \tag{2-2}</script><p>-1~1归一化:  </p>
-<script type="math/tex; mode=display">val = \frac{val-avg}{max-min} \tag{2-3}</script><p>代码实现<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">auto_norm</span><span class="params">(data_set)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    数据归一化</div><div class="line">    :param data_set: 待归一化的数据集</div><div class="line">    :return: 归一化后的数据集，每一列的取值范围，每一列的最小值</div><div class="line">    """</div><div class="line">    <span class="comment"># 获取每一列最大值和最小值</span></div><div class="line">    d_max, d_min = data_set.max(<span class="number">0</span>), data_set.min(<span class="number">0</span>)</div><div class="line">    d_range = d_max - d_min</div><div class="line"></div><div class="line">    mat_min = np.tile(d_min, (data_set.sharpe[<span class="number">0</span>], <span class="number">1</span>))</div><div class="line">    mat_max = np.tile(d_range, (data_set.sharpe[<span class="number">0</span>], <span class="number">1</span>))</div><div class="line"></div><div class="line">    mat_norm = (data_set - mat_min) / mat_max</div><div class="line">    <span class="keyword">return</span> mat_norm, d_range, d_min</div></pre></td></tr></table></figure></p>
+<p><strong>以下内容为Python2.7.x，不适用于Python3.x</strong></p>
+<h2 id="unicode、str与编码方式"><a href="#unicode、str与编码方式" class="headerlink" title="unicode、str与编码方式"></a>unicode、str与编码方式</h2><h3 id="1-unicode与str"><a href="#1-unicode与str" class="headerlink" title="1.unicode与str"></a>1.unicode与str</h3><p>在Python2.x中的字符串”表示”使用的是str,Python3.x中默认的则是unicode，unicode与str的区别在于使用单个字符还是双字符存储。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line">str_1 = <span class="string">u"我爱中国hehe"</span></div><div class="line">str_2 = <span class="string">"我爱中国hehe"</span></div><div class="line"><span class="keyword">print</span> type(str_1), str_1, len(str_1), str_1[<span class="number">0</span>] <span class="comment"># &lt;type 'unicode'&gt; 我爱中国hehe 8 我 </span></div><div class="line"><span class="keyword">print</span> type(str_2), str_2, len(str_2), str_2[<span class="number">0</span>] <span class="comment"># &lt;type 'str'&gt; 我爱中国hehe 16 �</span></div></pre></td></tr></table></figure>
+<p>在上面的代码中可以看出:  </p>
+<ul>
+<li>当使用u前缀的时候，是以unicode方式存储的字符串，而字符串长度就是字符的长度；</li>
+<li>当不使用u前缀的时候，是以str方式存储的字符串，而字符串的长度是字节的长度；</li>
+</ul>
+<p>综上，当使用汉字的时候如果需要统计字数，则需要使用unicode字符串，但需要<strong><code>注意</code></strong>的是使用unicode编码的时候print可以正常打印到控制台，但是如果需要重定向到文件中，则需要将unicode转码成str.</p>
+<h3 id="2-字符串与编码格式，decode与encode"><a href="#2-字符串与编码格式，decode与encode" class="headerlink" title="2. 字符串与编码格式，decode与encode"></a>2. 字符串与编码格式，decode与encode</h3><p>在<a href="#1-unicode与str">unicode与str</a>一节中的<code># -*- coding=utf-8 -*-</code>定义了使用str方式存储汉字的时候的编码，即默认在内存中的存储方式将使用utf-8编码，如“我爱中国”将每个汉字占用两个字节，但”hehe”会占用1个字节，因此才有了<code>len(str_2) = 16</code>;</p>
+<p>Python字符串编码异常是一个比较常见的异常，如:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">UnicodeEncodeError: <span class="string">'ascii'</span> codec can<span class="string">'t encode characters in position 0-3: ordinal not in range(128)</span></div></pre></td></tr></table></figure>
+<p>接上文，给出Demo,再进行分析:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">str_3 = str_1.encode(<span class="string">"utf-8"</span>)</div><div class="line"><span class="keyword">print</span> type(str_3), str_3, str_2 == str_3    <span class="comment"># &lt;type 'str'&gt; 我爱中国hehe True</span></div><div class="line"></div><div class="line">str_4 = str_1.encode(<span class="string">"gbk"</span>)</div><div class="line"><span class="keyword">print</span> type(str_4), str_4, len(str_4)        <span class="comment"># &lt;type 'str'&gt; �Ұ��й�hehe 12</span></div><div class="line"><span class="keyword">print</span> str_3 == str_4, str_2 == str_4        <span class="comment"># False False</span></div><div class="line"></div><div class="line">str_5 = str_4.decode(<span class="string">"gbk"</span>)</div><div class="line"><span class="keyword">print</span> type(str_5), str_5, str_5 == str_1    <span class="comment">#   &lt;type 'unicode'&gt; 我爱中国hehe True</span></div><div class="line"></div><div class="line">str_6 = str_2.decode(<span class="string">"utf-8"</span>)</div><div class="line"><span class="keyword">print</span> type(str_5), str_6, str_6 == str_1    <span class="comment"># &lt;type 'unicode'&gt; 我爱中国hehe True</span></div></pre></td></tr></table></figure>
+<p>在Python中字符串编码的两种格式为unicode,str; 其中<code>unicode -&gt; str</code>是encode操作，而<code>str -&gt; unicode</code>则需要decode;</p>
+<p>其实在Python的内部字符串的表示都是str类型的，或者说如果Python有类型的话，应该是char[]数组类型，每个char占1个字节，而str和unicode是Python中的对象表现形式。如果对Python的struct模块有所了解的话,就会明白在其他语言中存在byte类型的，但是Python是通过str来表示byte数组，因此str的本质是Python中的byte[]类型。</p>
+<h4 id="encode-编码"><a href="#encode-编码" class="headerlink" title="encode: 编码"></a>encode: 编码</h4><blockquote>
+<p>将Python对象编码成内存字节数据byte[]即str;</p>
+</blockquote>
+<h4 id="decode-解码"><a href="#decode-解码" class="headerlink" title="decode: 解码"></a>decode: 解码</h4><blockquote>
+<p>将内存字节数据byte[]解码成Python对象;</p>
+</blockquote>
+<p>有了上面的知识，就可以解释代码中的结果了:</p>
+<ul>
+<li>第2行: unicode通过encode方法编码成utf-8的str对象,因此str_2 == str_3才会成立，因为str_2在内存中使用的是utf-8格式存储;</li>
+<li>第4行: unicode通过encode方法编码成gbk的str对象,因此str_4 != str_2,同时gbk编码是一个汉字占用两个字节，因此长度为12,参考<a href="http://www.cnblogs.com/chenwenbiao/archive/2011/08/11/2134503.html" target="_blank" rel="external">UTF-8编码规则</a></li>
+<li>第6行: gbk格式的str对象通过decode方法再次解码成为unicode对象</li>
+<li>第8行: utf8格式的str对象通过decode方法解码称谓unicode对象</li>
+</ul>
+<h2 id="print与unicode"><a href="#print与unicode" class="headerlink" title="print与unicode"></a>print与unicode</h2><p>上面的代码如果通过命令<code>python demo.py</code>直接执行, 不会出现任何问题，但是如果将输出重定向<code>python demo.py &gt; demo.dat</code>,则会报<code>UnicodeEncodeError</code>的错误。</p>
+<p>原因: print直接输出unicode实质上是进行了encode(coding)的操作,其中coding与输出对象的编码设置有关，但重定向到文件中时不知道文件编码，则会尝试encode(defaultcoding即”ascii”)操作，因此会报错。<br>解决方案：</p>
+<h3 id="1-手动编码"><a href="#1-手动编码" class="headerlink" title="1. 手动编码"></a>1. 手动编码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">u""</span>.decode(<span class="string">'utf-8'</span>)</div></pre></td></tr></table></figure>
+<p>使用该方式，明确将输出对象编码为utf-8的str(上文提到实质为byte[]),就可以将文本输出为utf-8格式文本；</p>
+<h3 id="2-改变Python默认编码"><a href="#2-改变Python默认编码" class="headerlink" title="2. 改变Python默认编码"></a>2. 改变Python默认编码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line">reload(sys)</div><div class="line">sys.setdefaultencoding(<span class="string">'utf8'</span>)</div></pre></td></tr></table></figure>
+<p>使用上面的代码可以改变Python内部的默认编码方式，此时默认encode的时候将自动encode(“utf-8”),此时输出到文件将会是utf-8格式文本，同理设置setdefaultencoding(‘gbk’), 则输出的文本为gbk格式；</p>
+<p><strong>注意：</strong> reload(sys)这一句是必须写的，因为Python加载的时候会加载site.py文件，但是在site.py中554行有如下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> hasattr(sys, <span class="string">"setdefaultencoding"</span>):</div><div class="line">    <span class="keyword">del</span> sys.setdefaultencoding</div></pre></td></tr></table></figure>
+<p>会将setdefaultencoding给删除，因此如果不reload的话是找不到<code>sys.setdefaultencoding</code>方法的。</p>
+<blockquote>
+<p>本人小白，能力有限，如有错误，欢迎评论拍砖！！！</p>
+</blockquote>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2017/08/08/spring相关/" data-toggle="tooltip" data-placement="top"
-                           title="Spring相关">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2017/08/05/Hexo及Anisina使用心得/" data-toggle="tooltip" data-placement="top"
-                           title="Hexo及Anisina使用心得">Next Post &rarr;</a>
+                        <a href="/2017/08/08/spring相关/" data-toggle="tooltip" data-placement="top"
+                           title="Spring相关">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -245,7 +267,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#k-近邻算法"><span class="toc-text">k-近邻算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-KNN算法思想"><span class="toc-text">1. KNN算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数据归一化"><span class="toc-text">2. 数据归一化</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#unicode、str与编码方式"><span class="toc-text">unicode、str与编码方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-unicode与str"><span class="toc-text">1.unicode与str</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-字符串与编码格式，decode与encode"><span class="toc-text">2. 字符串与编码格式，decode与encode</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#encode-编码"><span class="toc-text">encode: 编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#decode-解码"><span class="toc-text">decode: 解码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print与unicode"><span class="toc-text">print与unicode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-手动编码"><span class="toc-text">1. 手动编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-改变Python默认编码"><span class="toc-text">2. 改变Python默认编码</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
@@ -267,8 +289,8 @@
                     </h5>
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Machine Learning"
-                           title="Machine Learning">Machine Learning</a>
+                        <a class="tag" href="/tags/#Python"
+                           title="Python">Python</a>
                         
                     </div>
                 </section>
