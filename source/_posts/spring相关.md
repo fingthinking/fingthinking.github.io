@@ -1,5 +1,5 @@
 ---
-title: spring相关
+title: Spring相关
 date: 2017-08-08 15:46:40
 tags:
 	- Spring
@@ -12,9 +12,8 @@ tags:
 2. Controller不生效有谁来背锅；
 3. 集成maven时无法找到spring.xsd文件；
 
-#### 1. 集成SpringMVC的时候的配置
-可以分为3个部分：  
-##### a) web.xml的配置
+## 1. 集成SpringMVC的时候的配置  
+### a) web.xml的配置
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -80,18 +79,18 @@ tags:
 
 **个人推荐：**在业务不是很复杂的时候仅使用Spring MVC子容器，可以避免很多Bean无法注入的问题。
 
-##### b) applicationContext.xml配置
+### b) applicationContext.xml配置
 
 ```xml
  <mvc:annotation-driven />
  <!-- 单个*匹配一层目录, 两个**匹配多层目录,推荐使用basepackage.**表示 -->
  <context:component-scan base-package="com.xxxx.**"/>
 ```
-`<context:component-scan />`标签已经具备了`<context: annotation-driven />`的功能,请参考:[\<context:component-scan>详解](http://www.cnblogs.com/fightingcoding/p/component-scan.html)
+`<context:component-scan />`标签已经具备了`<context: annotation-driven />`的功能,请参考:[ &lt;context:component-scan &gt;详解](http://www.cnblogs.com/fightingcoding/p/component-scan.html)
 
-`<mvc:annotation-driven />`标签则能够帮助我们实现mvc路由及其他一些功能，请参考：[spring <context:component-scan />及<mvc:annotation-driven />使用说明](http://blog.csdn.net/u011079274/article/details/51477287)
+`<mvc:annotation-driven />`标签则能够帮助我们实现mvc路由及其他一些功能，请参考：[spring &lt;context:component-scan &gt;及使用说明](http://blog.csdn.net/u011079274/article/details/51477287)
 
-#### c) pom.xml配置及RequestBody和ResponseBody
+### c) pom.xml配置及RequestBody和ResponseBody
 使用Json对象的话需要用到Jackson对应的依赖：
 
 ```xml
@@ -114,7 +113,7 @@ tags:
 ```
 并对请求对象，在参数中使用`@RequestBody`以及返回值中使用`@ResponseBody`注解进行标注。
 
-#### 2. Controller不生效有谁来背锅
+## 2. Controller不生效有谁来背锅
 前段时间写代码遇到了配置好Controller怎么都无法生效的问题，经过一系列排查，问题终于定位在`<context:component-scan />`的身上。
 
 Controller路径： `com.baidu.cpu.analyze.controller.XXXController`
@@ -135,7 +134,7 @@ c) 双`*`通配符，可以匹配0~n层包或类，但是会有些影响效率�
 
 > 个人比较倾向于在服务化的小规模的工程中用`**`进行配置.
 
-#### 3.集成maven时无法找到spring.xsd文件；
+## 3.集成maven时无法找到spring.xsd文件；
 使用jar包来运行Spring配置的时候，怎么都无法运行，报错找不到spring.xsd文件;
 其实该文件是在`spring.schemas`制定，并且在`spring.handlers`中进行处理，因此需要打包的时候将这两个文件打包到classpath下。
 

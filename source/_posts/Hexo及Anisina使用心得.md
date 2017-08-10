@@ -14,10 +14,10 @@ tags:
 Hexo初次使用的教程，就不再赘述，附上我参考的博客：
 [手把手教你用Hexo+Github 搭建属于自己的博客](http://blog.csdn.net/gdutxiaoxu/article/details/53576018)
 
-#### 问题1：无法部署项目到github中？  
+### 问题1：无法部署项目到github中？  
 解决办法：   
 
-##### a.检查`_config.yml`文件中github的配置
+#### a.检查`_config.yml`文件中github的配置
 
 ```yml
 deploy:
@@ -25,10 +25,10 @@ deploy:
   repo: git@github.com:xxxx/xxx.github.io.git
   branch: master
 ```
-##### b.安装hexo-deployer-git插件  
+#### b.安装hexo-deployer-git插件  
 > npm install hexo-deployer-git --save
 
-#### 问题2: 使用Anisina主题，page报错？
+### 问题2: 使用Anisina主题，page报错？
 
 ```javascript
 Unhandled rejection ReferenceError: /Users/liuruteng/blog/fingthinking/themes/Anisina/layout/page.ejs:145
@@ -81,7 +81,7 @@ sed -i="" '2s/^.*/layout: m_page/' index.ejs
 echo -e "---\nlayout: m_page\n---\n<%- page.content %>" > page.ejs 
 ```
 
-#### 问题3: 博客中使用数学公式
+### 问题3: 博客中使用数学公式
 安装`hexo-math`插件
 > npm install hexo-math --save
 
