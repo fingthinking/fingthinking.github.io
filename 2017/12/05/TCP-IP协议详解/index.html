@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        柳汝滕&#39;s blog
+        TCP/IP协议详解｜柳汝滕&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://fingthinking.github.io/tags/Spring/">
+    <link rel="canonical" href="http://fingthinking.github.io/2017/12/05/TCP-IP协议详解/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -43,7 +43,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
 <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="true
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
 " data-ishome = "false" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -126,161 +126,198 @@
 </script>
 
 <!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://otnnps88s.bkt.clouddn.com/image/xingkong.jpg">
+
+
 <style>
-    .intro-header .site-heading {
-        margin: 50px;
-    }
     
     header.intro-header {
         background-image: url('http://otnnps88s.bkt.clouddn.com/image/xingkong.jpg')
     }
+
     
 </style>
 
-<!-- Page Header -->
 <header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading text-center">
-                    <h1>archives</h1>
-                    <span class="subheading">可以根据归档日期检索所有文件</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>TCP/IP协议详解</h1>
+                    
+                    <span class="meta">
+                         作者 柳汝滕
+                        <span>
+                          日期 2017-12-05
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+						
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="post-title-haojen">
+        <span>
+            TCP/IP协议详解
+        </span>
+    </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- archive list -->
-            
-				
-				
-				
-					
-					
-					<div class="archive archive-year" data-date="2017">
-						<h2 class="archive-title">
-						<span class="fa fa-archive">
-							<a href="/archives/2017">2017</a>
-						</span>
-						</h2>
-				
-				
-					
-					
-					<div class="archive archive-month" data-date="201712">
-						<h3 class="archive-title">
-							<a href="/archives/2017/12">12</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/27/【再学 Java】01-面向对象/">
-                        <h4 class="post-title">
-                            Untitled
-                        </h4>
-                        
-                    </a>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <blockquote>
+<p><strong><em>注意：部分浏览器会拦截MathJax生成数学公式，如出现无法显示公式，请允许浏览器加载脚本</em></strong></p>
+</blockquote>
+<p>本文转载自:<br><a href="http://www.mamicode.com/info-detail-1409652.html" target="_blank" rel="external">tcp ip参数详解</a></p>
+<p><strong>1. TCP/IP模型</strong></p>
+<p>我们一般知道OSI的网络参考模型是分为7层：“应表会传网数物”——应用层，表示层，会话层，传输层，网络层，数据链路层，物理层。而实际的Linux网络层协议是参照了OSI标准，但是它实现为4层：应用层，传输层，网络层，网络接口层。OSI的多层对应到了实际实现中的一层。我们最为关注的是传输层和网络层。一般而言网络层也就是IP层，负责IP路由寻址等等细节，而传输层TCP/UDP负责数据的可靠/快速的传输功能。</p>
+<p><img src="http://images2015.cnblogs.com/blog/699877/201510/699877-20151011101653518-301598820.png" alt="OSI与TCP/IP模型"></p>
+<p>网络的实际运行过程就是发送方，从高层向底层，根据协议对数据进行一层一层的封包，每一层加上该层协议的header；而接收方，从底层向高层，不断的解封数据包，每一层去掉该层的协议的header，然后最高层的应用层得到应用层数据：<br><img src="http://images2015.cnblogs.com/blog/699877/201510/699877-20151011102906174-385408306.png" alt="TCP/IP数据传输"><br>每一层添加的 Header(TCP/UDP Header, IP Header, Data Link Header) 都是为了实现该层协议服务而必须存在的协议相关数据。</p>
+<p><strong>2. Socket Buffer</strong></p>
+<p>发生方发送数据，接收方接受数据，那么双方必须存在一个保存数据的buffer，称为Socket Buffer，TCP/IP的实现都是放在kernel中的，所以Socket Buffer也是在kernel中的。Socket Buffer的大小配置对网络的性能有很大的影响，相关参数如下：</p>
+<blockquote>
+<p>1) <strong><em>/proc/sys/net/ipv4/tcp_mem</em></strong>: 这是一个系统全局参数，表示所有TCP的buffer配置。有三个值，<strong>单位为内存页(通常为4K)</strong>，第一个值buffer值的下限，第二个值表示内存压力模式开始对buffer应于压力的上限；第三个值内存使用的上限，超过时，可能会丢弃报文。<br>2) </p>
+</blockquote>
+<ol>
+<li>fs</li>
+</ol>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/12/27/【再学 Java】01-面向对象/" data-toggle="tooltip" data-placement="top"
+                           title="">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/08/10/Python字符串编码/" data-toggle="tooltip" data-placement="top"
+                           title="Python字符串编码及文件输出">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDAwNy82NTcy">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
                 </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/05/TCP-IP协议详解/">
-                        <h4 class="post-title">
-                            TCP/IP协议详解
-                        </h4>
-                        
-                    </a>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    
                 </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-					
-					</div><!--month-->
-					
-					
-					<div class="archive archive-month" data-date="201708">
-						<h3 class="archive-title">
-							<a href="/archives/2017/08">08</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/08/10/Python字符串编码/">
-                        <h4 class="post-title">
-                            Python字符串编码及文件输出
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/08/08/spring相关/">
-                        <h4 class="post-title">
-                            Spring相关
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/08/08/k-近邻算法/">
-                        <h4 class="post-title">
-                            k-近邻算法
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/08/05/Hexo及Anisina使用心得/">
-                        <h4 class="post-title">
-                            Hexo及Anisina使用心得
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
+            </div>
         </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
     </div>
-</div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+                o = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
+        }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+        anchors.options = {
+            visible: 'always',
+            placement: 'right',
+            icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link {
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top: -0.1em;
+        }
+    }
+</style>
+
+
+
 
 <!-- Footer -->
 <!-- Footer -->
